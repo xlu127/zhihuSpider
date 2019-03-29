@@ -135,12 +135,12 @@ class ZhihuSpider(object):
         :return:
         '''
         response = self.parse_url(url=self.url.get("ordinary"), headers=self.headers)
-        if response.status_code == 200:
+        if response.url == "https://www.zhihu.com":
             print("登入成功")
             print(requests.utils.dict_from_cookiejar(response.cookies))
             return True
         else:
-            print("登录失败", response.status_code)
+            print("登录失败", response.url)
             return False
 
     def captcha(self):
